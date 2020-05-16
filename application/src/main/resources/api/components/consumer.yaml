@@ -1,0 +1,50 @@
+components:
+    schemas:
+        ConsumerRequest:
+            title: ConsumerRequest
+            type: object
+            properties:
+                name:
+                    type: string
+                address:
+                    type: string
+                reference:
+                    type: string
+                consumes:
+                    type: array
+                    items:
+                        $ref: './lookup.yaml#/components/schemas/LookupCode'
+            required:
+                - name
+                - address
+                - consumes
+
+        ConsumerResponse:
+            title: ConsumerResponse
+            type: object
+            properties:
+                name:
+                    type: string
+                address:
+                    type: string
+                reference:
+                    type: string
+                uuid:
+                    type: string
+                consumes:
+                    type: array
+                    items:
+                        $ref: './lookup.yaml#/components/schemas/LookupResponse'
+
+
+        ConsumerResponsePage:
+            title: ConsumerResponsePage
+            type: object
+            properties:
+                content:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ConsumerResponse'
+
+
+

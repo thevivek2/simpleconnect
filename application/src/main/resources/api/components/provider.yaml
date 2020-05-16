@@ -1,0 +1,52 @@
+components:
+    schemas:
+        ProviderRequest:
+            title: ProviderRequest
+            type: object
+            properties:
+                name:
+                    type: string
+                currentAddress:
+                    type: string
+                permanentAddress:
+                    type: string
+                reference:
+                    type: string
+                provides:
+                    type: array
+                    items:
+                        $ref: './lookup.yaml#/components/schemas/LookupCode'
+            required:
+                - name
+                - currentAddress
+                - provides
+
+        ProviderResponse:
+            title: ProviderResponse
+            type: object
+            properties:
+                name:
+                    type: string
+                currentAddress:
+                    type: string
+                permanentAddress:
+                    type: string
+                reference:
+                    type: string
+                uuid:
+                    type: string
+                provides:
+                    type: array
+                    items:
+                        $ref: './lookup.yaml#/components/schemas/LookupResponse'
+
+
+        ProviderResponsePage:
+            title: ProviderResponsePage
+            type: object
+            properties:
+                content:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ProviderResponse'
+

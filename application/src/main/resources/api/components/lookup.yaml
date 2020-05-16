@@ -1,0 +1,52 @@
+components:
+    schemas:
+        LookupRequest:
+            title: LookupRequest
+            type: object
+            properties:
+                category:
+                    type: string
+                code:
+                    type: string
+                description:
+                    type: string
+                additionalInfo:
+                    type: string
+            required:
+                - category
+                - code
+                - description
+
+        LookupResponse:
+            title: LookupResponse
+            type: object
+            properties:
+                code:
+                    type: string
+                category:
+                    type: string
+                description:
+                    type: string
+                additionalInfo:
+                    type: string
+                uuid:
+                    type: string
+
+        LookupResponsePage:
+            title: LookupResponsePage
+            type: object
+            properties:
+                content:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/LookupResponse'
+
+        LookupCode:
+            title: LookupCode
+            type: object
+            properties:
+                code:
+                    type: string
+            required:
+                - code
+

@@ -1,0 +1,210 @@
+openapi: "3.0.0"
+servers:
+    -   url: http://localhost:8080
+info:
+    description: Simple Connect Service API
+    version: "1.0.0"
+    title: SimpleConnect Service
+paths:
+    /lookup:
+        post:
+            summary: Create Lookup
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './components/lookup.yaml#/components/schemas/LookupRequest'
+
+            responses:
+                '200':
+                    description: created ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
+        get:
+            summary: Get Lookups
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/lookup.yaml#/components/schemas/LookupResponsePage'
+
+    /lookup/{uuid}:
+        get:
+            summary: Get Lookup by UUID
+            parameters:
+                -   name: uuid
+                    in: path
+                    description: UUID
+                    required: true
+                    schema:
+                        type: string
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
+
+        put:
+            summary: Repair Lookup
+            parameters:
+                -   name: uuid
+                    in: path
+                    description: UUID
+                    required: true
+                    schema:
+                        type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: './components/lookup.yaml#/components/schemas/LookupRequest'
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
+
+    /provider:
+        post:
+            summary: Create Provider
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './components/provider.yaml#/components/schemas/ProviderRequest'
+
+            responses:
+                '200':
+                    description: created ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
+        get:
+            summary: Get Providers
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/provider.yaml#/components/schemas/ProviderResponsePage'
+
+    /provider/{uuid}:
+        get:
+            summary: Get Provider by UUID
+            parameters:
+                -   name: uuid
+                    in: path
+                    description: UUID
+                    required: true
+                    schema:
+                        type: string
+            responses:
+                    '200':
+                        description: ok
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
+
+        put:
+            summary: Update Provider
+            parameters:
+                    - name: uuid
+                      in: path
+                      description: UUID
+                      required: true
+                      schema:
+                          type: string
+            requestBody:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/provider.yaml#/components/schemas/ProviderRequest'
+            responses:
+                    '200':
+                        description: ok
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
+
+
+    /consumer:
+        post:
+            summary: Create Consumer
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: './components/consumer.yaml#/components/schemas/ConsumerRequest'
+
+            responses:
+                '200':
+                    description: created ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/consumer.yaml#/components/schemas/ConsumerResponse'
+        get:
+            summary: Get Consumers
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/consumer.yaml#/components/schemas/ConsumerResponsePage'
+
+    /consumer/{uuid}:
+        get:
+            summary: Get Consumer by UUID
+            parameters:
+                    - name: uuid
+                      in: path
+                      description: UUID
+                      required: true
+                      schema:
+                          type: string
+            responses:
+                    '200':
+                        description: ok
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: './components/consumer.yaml#/components/schemas/ConsumerResponse'
+
+        put:
+            summary: Update Consumer
+            parameters:
+                    - name: uuid
+                      in: path
+                      description: UUID
+                      required: true
+                      schema:
+                          type: string
+            requestBody:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/consumer.yaml#/components/schemas/ConsumerRequest'
+            responses:
+                    '200':
+                        description: ok
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: './components/consumer.yaml#/components/schemas/ConsumerResponse'
+
