@@ -4,12 +4,6 @@ components:
             title: ProviderRequest
             type: object
             properties:
-                name:
-                    type: string
-                currentAddress:
-                    type: string
-                permanentAddress:
-                    type: string
                 reference:
                     type: string
                 provides:
@@ -24,9 +18,7 @@ components:
             properties:
                 name:
                     type: string
-                currentAddress:
-                    type: string
-                permanentAddress:
+                address:
                     type: string
                 reference:
                     type: string
