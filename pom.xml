@@ -21,7 +21,7 @@
     <properties>
         <java.version>1.8</java.version>
         <jacoco.version>0.8.5</jacoco.version>
-        <jacoco.coverageRatio>0.85</jacoco.coverageRatio>
+        <jacoco.coverageRatio>0.80</jacoco.coverageRatio>
     </properties>
 
     <dependencies>

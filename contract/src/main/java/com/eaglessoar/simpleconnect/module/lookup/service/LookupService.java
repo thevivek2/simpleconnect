@@ -10,4 +10,6 @@ public interface LookupService {
 
     Lookup repair(String uuid, Lookup lookup);
 
+    Lookup save(Lookup lookup);
+
 }

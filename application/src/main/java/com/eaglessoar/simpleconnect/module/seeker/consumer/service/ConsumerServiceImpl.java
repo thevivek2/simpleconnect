@@ -21,8 +21,8 @@ public class ConsumerServiceImpl implements ConsumerService {
     public Consumer create(Consumer consumer) {
         consumer.setUuid(UUID.randomUUID().toString());
         Lookup lookup = lookupService.get(consumer.getConsumes().getUuid());
-        consumer.setConsumes(lookup);
         lookup.setInterestedCount(lookup.getInterestedCount() + 1);
+        consumer.setConsumes(lookupService.save(lookup));
         return repository.save(consumer);
     }
 

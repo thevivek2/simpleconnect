@@ -31,4 +31,9 @@ public class LookupServiceImpl implements LookupService {
         lookup.setUuid(onSystem.getUuid());
         return repository.save(lookup);
     }
+
+    @Override
+    public Lookup save(Lookup lookup) {
+        return repository.save(lookup);
+    }
 }
