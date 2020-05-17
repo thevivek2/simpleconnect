@@ -1,11 +1,14 @@
 package com.eaglessoar.simpleconnect.module.common.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,4 +22,8 @@ public abstract class BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String uuid;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdOn;
 }

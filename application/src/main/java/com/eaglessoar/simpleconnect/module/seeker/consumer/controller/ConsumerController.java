@@ -5,6 +5,7 @@ import com.eaglessoar.simpleconnect.api.model.ConsumerRequest;
 import com.eaglessoar.simpleconnect.api.model.ConsumerResponse;
 import com.eaglessoar.simpleconnect.api.model.ConsumerResponsePage;
 import com.eaglessoar.simpleconnect.module.seeker.consumer.mapper.ConsumerMapper;
+import com.eaglessoar.simpleconnect.module.seeker.consumer.model.Consumer;
 import com.eaglessoar.simpleconnect.module.seeker.consumer.repository.ConsumerJpaRepository;
 import com.eaglessoar.simpleconnect.module.seeker.consumer.service.ConsumerService;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,9 @@ public class ConsumerController implements ConsumerApiDelegate {
 
     @Override
     public ResponseEntity<ConsumerResponse> consumerPost(ConsumerRequest consumerRequest) {
-        return ResponseEntity.ok(mapper.toResponse(service.create(mapper.toModel(consumerRequest))));
+        Consumer consumer = mapper.toModel(consumerRequest);
+        consumer.setName("anonymous 2");
+        return ResponseEntity.ok(mapper.toResponse(service.create(consumer)));
     }
 
     @Override

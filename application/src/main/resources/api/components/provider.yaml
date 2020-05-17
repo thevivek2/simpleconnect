@@ -27,7 +27,8 @@ components:
                 provides:
                     type: array
                     $ref: './lookup.yaml#/components/schemas/LookupResponse'
-
+                createdOn:
+                    type: string
 
         ProviderResponsePage:
             title: ProviderResponsePage
@@ -37,4 +38,3 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/ProviderResponse'
-

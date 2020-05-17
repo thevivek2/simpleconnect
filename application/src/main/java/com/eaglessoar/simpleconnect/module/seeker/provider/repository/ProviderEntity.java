@@ -20,5 +20,6 @@ public class ProviderEntity extends BaseEntity {
     @OneToOne(cascade = CascadeType.MERGE)
     private LookupEntity provides;
     private String reference;
+    private int interestCount;
 
 }

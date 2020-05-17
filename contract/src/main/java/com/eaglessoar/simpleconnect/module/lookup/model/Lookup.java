@@ -11,5 +11,6 @@ public class Lookup {
     private String uuid;
     private String summary;
     private String description;
+    private int interestedCount;
     private LocalDateTime createdOn;
 }

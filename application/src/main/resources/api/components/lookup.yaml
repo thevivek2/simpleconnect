@@ -24,6 +24,9 @@ components:
                     type: string
                 createdOn:
                     type: string
+                interestedCount:
+                    type: number
+                    format: int
 
         LookupResponsePage:
             title: LookupResponsePage

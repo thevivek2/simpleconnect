@@ -7,7 +7,6 @@ import com.eaglessoar.simpleconnect.module.seeker.consumer.repository.ConsumerRe
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +20,9 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Override
     public Consumer create(Consumer consumer) {
         consumer.setUuid(UUID.randomUUID().toString());
-        enrich(consumer);
+        Lookup lookup = lookupService.get(consumer.getConsumes().getUuid());
+        consumer.setConsumes(lookup);
+        lookup.setInterestedCount(lookup.getInterestedCount() + 1);
         return repository.save(consumer);
     }
 
@@ -35,7 +36,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         Consumer onSystem = repository.findBy(uuid);
         consumer.setUuid(uuid);
         consumer.setId(onSystem.getId());
-        enrich(consumer);
+        consumer.setConsumes(lookupService.get(consumer.getConsumes().getUuid()));
         return repository.save(consumer);
     }
 
@@ -44,8 +45,4 @@ public class ConsumerServiceImpl implements ConsumerService {
         return repository.simpleMatch(providerInterest);
     }
 
-    private void enrich(Consumer consumer){
-        List<Lookup> enrichedConsumes = new ArrayList<>();
-        consumer.setConsumes(enrichedConsumes);
-    }
 }

@@ -3,8 +3,6 @@ package com.eaglessoar.simpleconnect.module.seeker.consumer.model;
 import com.eaglessoar.simpleconnect.module.lookup.model.Lookup;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class Consumer {
 
@@ -12,7 +10,7 @@ public class Consumer {
     private String uuid;
     private String name;
     private String address;
-    private List<Lookup> consumes;
+    private Lookup consumes;
     private String reference;
 
 

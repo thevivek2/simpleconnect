@@ -5,6 +5,7 @@ import com.eaglessoar.simpleconnect.api.model.ProviderRequest;
 import com.eaglessoar.simpleconnect.api.model.ProviderResponse;
 import com.eaglessoar.simpleconnect.api.model.ProviderResponsePage;
 import com.eaglessoar.simpleconnect.module.seeker.provider.mapper.ProviderMapper;
+import com.eaglessoar.simpleconnect.module.seeker.provider.model.Provider;
 import com.eaglessoar.simpleconnect.module.seeker.provider.repository.ProviderJpaRepository;
 import com.eaglessoar.simpleconnect.module.seeker.provider.service.ProviderService;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,10 @@ public class ProviderController implements ProviderApiDelegate {
 
     @Override
     public ResponseEntity<ProviderResponse> providerPost(ProviderRequest providerRequest) {
-        return ResponseEntity.ok(mapper.toResponse(service.create(mapper.toModel(providerRequest))));
+        Provider provider = mapper.toModel(providerRequest);
+        provider.setName("anonymous");
+        provider.setCurrentAddress("unknown address");
+        return ResponseEntity.ok(mapper.toResponse(service.create(provider)));
     }
 
     @Override

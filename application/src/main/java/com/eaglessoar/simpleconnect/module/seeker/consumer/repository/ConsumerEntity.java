@@ -7,8 +7,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.List;
+import javax.persistence.OneToOne;
 
 @Data
 @Entity
@@ -17,8 +16,8 @@ public class ConsumerEntity extends BaseEntity {
 
     private String name;
     private String address;
-    @ManyToMany(cascade = CascadeType.MERGE)
-    private List<LookupEntity> consumes;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private LookupEntity consumes;
     private String reference;
 
 }

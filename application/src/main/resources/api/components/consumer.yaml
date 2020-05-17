@@ -4,19 +4,10 @@ components:
             title: ConsumerRequest
             type: object
             properties:
-                name:
-                    type: string
-                address:
-                    type: string
-                reference:
-                    type: string
                 consumes:
-                    type: array
-                    items:
-                        $ref: './lookup.yaml#/components/schemas/LookupCode'
+                    type: object
+                    $ref: './lookup.yaml#/components/schemas/LookupCode'
             required:
-                - name
-                - address
                 - consumes
 
         ConsumerResponse:
@@ -32,9 +23,8 @@ components:
                 uuid:
                     type: string
                 consumes:
-                    type: array
-                    items:
-                        $ref: './lookup.yaml#/components/schemas/LookupResponse'
+                    type: object
+                    $ref: './lookup.yaml#/components/schemas/LookupResponse'
 
 
         ConsumerResponsePage:

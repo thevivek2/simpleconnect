@@ -15,10 +15,12 @@ import java.util.UUID;
 public class ProviderServiceImpl implements ProviderService {
 
     private final ProviderRepository repository;
+    private final LookupService lookupService;
 
     @Override
     public Provider create(Provider provider) {
         provider.setUuid(UUID.randomUUID().toString());
+        provider.setProvides(lookupService.create(provider.getProvides()));
         return repository.save(provider);
     }
 
