@@ -13,12 +13,9 @@ components:
                 reference:
                     type: string
                 provides:
-                    type: array
-                    items:
-                        $ref: './lookup.yaml#/components/schemas/LookupCode'
+                    type: object
+                    $ref: './lookup.yaml#/components/schemas/LookupRequest'
             required:
-                - name
-                - currentAddress
                 - provides
 
         ProviderResponse:
@@ -37,8 +34,7 @@ components:
                     type: string
                 provides:
                     type: array
-                    items:
-                        $ref: './lookup.yaml#/components/schemas/LookupResponse'
+                    $ref: './lookup.yaml#/components/schemas/LookupResponse'
 
 
         ProviderResponsePage:

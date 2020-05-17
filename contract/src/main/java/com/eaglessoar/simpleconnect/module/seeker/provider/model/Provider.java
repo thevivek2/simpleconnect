@@ -3,8 +3,6 @@ package com.eaglessoar.simpleconnect.module.seeker.provider.model;
 import com.eaglessoar.simpleconnect.module.lookup.model.Lookup;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class Provider {
 
@@ -13,7 +11,7 @@ public class Provider {
     private String name;
     private String currentAddress;
     private String permanentAddress;
-    private List<Lookup> provides;
+    private Lookup provides;
     private String reference;
 
 }

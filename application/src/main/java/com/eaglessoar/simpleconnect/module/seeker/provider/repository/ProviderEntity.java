@@ -7,8 +7,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.List;
+import javax.persistence.OneToOne;
 
 @Data
 @Entity
@@ -18,8 +17,8 @@ public class ProviderEntity extends BaseEntity {
     private String name;
     private String currentAddress;
     private String permanentAddress;
-    @ManyToMany(cascade = CascadeType.MERGE)
-    private List<LookupEntity> provides;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private LookupEntity provides;
     private String reference;
 
 }
