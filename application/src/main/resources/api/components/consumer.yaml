@@ -6,7 +6,7 @@ components:
             properties:
                 consumes:
                     type: object
-                    $ref: './lookup.yaml#/components/schemas/LookupCode'
+                    $ref: './lookup.yaml#/components/schemas/LookupUuid'
             required:
                 - consumes
 

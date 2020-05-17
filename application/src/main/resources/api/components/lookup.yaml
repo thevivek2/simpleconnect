@@ -37,12 +37,12 @@ components:
                     items:
                         $ref: '#/components/schemas/LookupResponse'
 
-        LookupCode:
-            title: LookupCode
+        LookupUuid:
+            title: LookupUuid
             type: object
             properties:
-                code:
+                uuid:
                     type: string
             required:
-                - code
+                - uuid
 
