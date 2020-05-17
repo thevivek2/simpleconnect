@@ -24,18 +24,4 @@ public class LookUpRepositoryImpl implements LookupRepository {
         return mapper.toModel(repository.findByUuid(uuid).orElseThrow(LookupNotFoundException.uuid(uuid)));
     }
 
-    @Override
-    public boolean existsByCode(String code) {
-        return repository.existsByCode(code);
-    }
-
-    @Override
-    public boolean existsByCodeAndUuidNot(String code, String uuid) {
-        return repository.existsByCodeAndUuidNot(code, uuid);
-    }
-
-    @Override
-    public Lookup findByCode(String code) {
-        return mapper.toModel(repository.findByCode(code).orElseThrow(LookupNotFoundException.code(code)));
-    }
 }

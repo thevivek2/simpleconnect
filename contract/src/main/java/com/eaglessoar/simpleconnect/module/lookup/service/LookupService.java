@@ -10,7 +10,4 @@ public interface LookupService {
 
     Lookup repair(String uuid, Lookup lookup);
 
-    Lookup getByCode(String code);
-
-
 }

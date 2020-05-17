@@ -46,7 +46,6 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     private void enrich(Consumer consumer){
         List<Lookup> enrichedConsumes = new ArrayList<>();
-        consumer.getConsumes().forEach(x -> enrichedConsumes.add(lookupService.getByCode(x.getCode())));
         consumer.setConsumes(enrichedConsumes);
     }
 }

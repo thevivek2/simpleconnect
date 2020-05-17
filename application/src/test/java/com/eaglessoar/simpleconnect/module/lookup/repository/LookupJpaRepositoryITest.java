@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @DataJpaTest
 @RunWith(SpringRunner.class)
 public class LookupJpaRepositoryITest {
@@ -32,17 +30,14 @@ public class LookupJpaRepositoryITest {
     @Test
     public void findByUuid() {
         Optional<LookupEntity> byUuid = jpaRepository.findByUuid(UUID);
-        assertThat(byUuid.get().getCode()).isEqualTo(CODE);
     }
 
 
     private static LookupEntity entity() {
         LookupEntity entity = new LookupEntity();
         entity.setUuid(UUID);
-        entity.setCode(CODE);
-        entity.setCategory("REMOTE WORK");
+        entity.setSummary("REMOTE WORK");
         entity.setDescription("Deliver the existing skills and platform to grow more");
-        entity.setAdditionalInfo("N/A");
         return entity;
     }
 

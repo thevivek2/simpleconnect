@@ -4,32 +4,25 @@ components:
             title: LookupRequest
             type: object
             properties:
-                category:
-                    type: string
-                code:
+                summary:
                     type: string
                 description:
                     type: string
-                additionalInfo:
-                    type: string
             required:
-                - category
-                - code
+                - summary
                 - description
 
         LookupResponse:
             title: LookupResponse
             type: object
             properties:
-                code:
-                    type: string
-                category:
+                summary:
                     type: string
                 description:
                     type: string
-                additionalInfo:
-                    type: string
                 uuid:
+                    type: string
+                createdOn:
                     type: string
 
         LookupResponsePage:

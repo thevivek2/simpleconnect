@@ -3,9 +3,12 @@ package com.eaglessoar.simpleconnect.module.lookup.repository.entity;
 import com.eaglessoar.simpleconnect.module.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -13,10 +16,11 @@ import javax.persistence.Entity;
 public class LookupEntity extends BaseEntity {
 
     @Column(nullable = false)
-    private String category;
-    @Column(nullable = false, unique = true)
-    private String code;
+    private String summary;
+    @Lob
     @Column(nullable = false)
     private String description;
-    private String additionalInfo;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdOn;
 }

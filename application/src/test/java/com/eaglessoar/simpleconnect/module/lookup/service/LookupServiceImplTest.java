@@ -1,6 +1,5 @@
 package com.eaglessoar.simpleconnect.module.lookup.service;
 
-import com.eaglessoar.simpleconnect.exception.DuplicateLookupException;
 import com.eaglessoar.simpleconnect.module.lookup.model.Lookup;
 import com.eaglessoar.simpleconnect.module.lookup.repository.LookupRepository;
 import org.junit.Before;
@@ -23,26 +22,12 @@ public class LookupServiceImplTest {
 
     @Test
     public void create() {
-        String code = "002";
-        Lookup lookup = lookup(null, code);
+        Lookup lookup = new Lookup();
         when(repository.save(lookup)).thenReturn(lookup);
-        when(repository.existsByCode(code)).thenReturn(false);
 
         Lookup created = service.create(lookup);
         assertThat(created.getUuid()).isNotEmpty();
         verify(repository).save(lookup);
-        verify(repository).existsByCode(code);
-    }
-
-
-    @Test(expected = DuplicateLookupException.class)
-    public void createWhenDuplicateCodeShouldRaiseException() {
-        String code = "002";
-        Lookup lookup = lookup(null, code);
-        when(repository.existsByCode(code)).thenReturn(true);
-
-        service.create(lookup);
-        verify(repository).existsByCode(code);
     }
 
     @Test
@@ -61,9 +46,8 @@ public class LookupServiceImplTest {
         String uuid = "2";
         String code = "003";
         Lookup onSystem = lookup(uuid, 2L);
-        Lookup updatingItem = lookup(uuid, code, "Test Category", "Test desc", "Additional Info");
+        Lookup updatingItem = lookup(uuid, "Summary", "Test desc");
 
-        when(repository.existsByCodeAndUuidNot(code, uuid)).thenReturn(false);
         when(repository.findBy(uuid)).thenReturn(onSystem);
         when(repository.save(updatingItem)).thenReturn(updatingItem);
 
@@ -71,19 +55,6 @@ public class LookupServiceImplTest {
         assertThat(repaired).isEqualTo(updatingItem);
         assertThat(repaired.getId()).isEqualTo(onSystem.getId());
         verify(repository).findBy(uuid);
-        verify(repository).existsByCodeAndUuidNot(code, uuid);
-    }
-
-    @Test(expected = DuplicateLookupException.class)
-    public void repairWhenDuplicateCodeShouldRaiseException() {
-        String uuid = "2";
-        String code = "003";
-        Lookup updatingItem = lookup(uuid, code, "Test Category", "Test desc", "Additional Info");
-
-        when(repository.existsByCodeAndUuidNot(code, uuid)).thenReturn(true);
-
-        service.repair(uuid, updatingItem);
-        verify(repository).existsByCodeAndUuidNot(code, uuid);
     }
 
 
@@ -99,18 +70,11 @@ public class LookupServiceImplTest {
         return lookup;
     }
 
-    private static Lookup lookup(String uuid, String code) {
-        Lookup lookup = lookup(uuid);
-        lookup.setCode(code);
-        return lookup;
-    }
 
-    private static Lookup lookup(String uuid, String code, String category, String desc, String additionalInfo) {
+    private static Lookup lookup(String uuid, String summary, String desc) {
         Lookup lookup = lookup(uuid);
-        lookup.setCode(code);
-        lookup.setCategory(category);
+        lookup.setSummary(summary);
         lookup.setDescription(desc);
-        lookup.setAdditionalInfo(additionalInfo);
         return lookup;
     }
 }

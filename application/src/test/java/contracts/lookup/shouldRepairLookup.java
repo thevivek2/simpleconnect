@@ -15,10 +15,9 @@ class shouldRepairLookup implements Supplier<Contract> {
             c.request(r -> {
                 r.method("PUT");
                 r.url("/lookup/2");
-                r.body(map().entry("code", "VV-001")
-                        .entry("category", "REMOTE WORK")
-                        .entry("description", "Test description repaired")
-                        .entry("additionalInfo", "Test Info"));
+                r.body(map()
+                        .entry("summary", "REMOTE WORK")
+                        .entry("description", "Test description repaired"));
                 r.headers(h -> {
                     h.contentType(h.applicationJson());
                 });

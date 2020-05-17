@@ -77,8 +77,7 @@ public class LookUpControllerTest {
     @Test
     public void lookupUuidGet() {
         String uuid = "2";
-        String code = "002";
-        LookupResponse response = response(uuid, code);
+        LookupResponse response = response(uuid);
         Lookup lookup = new Lookup();
         when(mapper.toResponse(lookup)).thenReturn(response);
         when(service.get(uuid)).thenReturn(lookup);
@@ -86,7 +85,6 @@ public class LookUpControllerTest {
         ResponseEntity<LookupResponse> responseEntity = controller.lookupUuidGet(uuid);
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(OK);
-        assertThat(requireNonNull(responseEntity.getBody()).getCode()).isEqualTo(code);
         verify(mapper).toResponse(lookup);
         verify(service).get(uuid);
     }
@@ -94,9 +92,8 @@ public class LookUpControllerTest {
     @Test
     public void lookupUuidPut() {
         String uuid = "2";
-        String code = "002";
         LookupRequest request = new LookupRequest();
-        LookupResponse response = response(uuid, code);
+        LookupResponse response = response(uuid);
         Lookup lookup = new Lookup();
         when(mapper.toModel(request)).thenReturn(lookup);
         when(mapper.toResponse(lookup)).thenReturn(response);
@@ -105,7 +102,6 @@ public class LookUpControllerTest {
         ResponseEntity<LookupResponse> responseEntity = controller.lookupUuidPut(uuid, request);
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(OK);
-        assertThat(requireNonNull(responseEntity.getBody()).getCode()).isEqualTo(code);
         verify(mapper).toModel(request);
         verify(mapper).toResponse(lookup);
         verify(service).repair(uuid, lookup);
@@ -118,9 +114,4 @@ public class LookUpControllerTest {
         return response;
     }
 
-    private static LookupResponse response(String uuid, String code) {
-        LookupResponse response = response(uuid);
-        response.setCode(code);
-        return response;
-    }
 }

@@ -8,11 +8,4 @@ public interface LookupRepository {
 
     Lookup findBy(String uuid);
 
-    boolean existsByCode(String code);
-
-    boolean existsByCodeAndUuidNot(String code, String uuid);
-
-    Lookup findByCode(String code);
-
-
 }

@@ -9,9 +9,4 @@ public interface LookUpJpaRepository extends JpaRepository<LookupEntity, Long> {
 
     Optional<LookupEntity> findByUuid(String uuid);
 
-    boolean existsByCode(String code);
-
-    boolean existsByCodeAndUuidNot(String code, String uuid);
-
-    Optional<LookupEntity> findByCode(String code);
 }

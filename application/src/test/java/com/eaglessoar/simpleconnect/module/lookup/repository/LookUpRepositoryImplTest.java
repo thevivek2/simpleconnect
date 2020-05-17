@@ -10,8 +10,6 @@ import org.junit.Test;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class LookUpRepositoryImplTest {
@@ -60,23 +58,6 @@ public class LookUpRepositoryImplTest {
         when(jpaRepository.findByUuid(uuid)).thenReturn(Optional.empty());
         repository.findBy(uuid);
         verify(jpaRepository).findByUuid(uuid);
-    }
-
-    @Test
-    public void existsByCodeTest() {
-        String code = "2";
-        when(jpaRepository.existsByCode(code)).thenReturn(false);
-        assertFalse(repository.existsByCode(code));
-        verify(jpaRepository).existsByCode(code);
-    }
-
-    @Test
-    public void existsByCodeAndUuidNotTest() {
-        String uuid = "2";
-        String code = "022";
-        when(jpaRepository.existsByCodeAndUuidNot(code, uuid)).thenReturn(true);
-        assertTrue(repository.existsByCodeAndUuidNot(code, uuid));
-        verify(jpaRepository).existsByCodeAndUuidNot(code, uuid);
     }
 
 

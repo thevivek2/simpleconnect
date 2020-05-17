@@ -47,7 +47,6 @@ public class ProviderServiceImpl implements ProviderService {
 
     private void enrich(Provider provider){
         List<Lookup> enrichedProvides = new ArrayList<>();
-        provider.getProvides().forEach(x -> enrichedProvides.add(lookupService.getByCode(x.getCode())));
         provider.setProvides(enrichedProvides);
     }
 }
