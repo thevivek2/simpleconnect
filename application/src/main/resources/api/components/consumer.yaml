@@ -5,8 +5,7 @@ components:
             type: object
             properties:
                 consumes:
-                    type: object
-                    $ref: './lookup.yaml#/components/schemas/LookupUuid'
+                    type: string
             required:
                 - consumes
 
@@ -18,13 +17,10 @@ components:
                     type: string
                 address:
                     type: string
-                reference:
-                    type: string
-                uuid:
+                id:
                     type: string
                 consumes:
-                    type: object
-                    $ref: './lookup.yaml#/components/schemas/LookupResponse'
+                    type: string
 
 
         ConsumerResponsePage:

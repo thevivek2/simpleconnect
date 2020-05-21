@@ -6,73 +6,6 @@ info:
     version: "1.0.0"
     title: SimpleConnect Service
 paths:
-    /lookup:
-        post:
-            summary: Create Lookup
-            requestBody:
-                required: true
-                content:
-                    application/json:
-                        schema:
-                            $ref: './components/lookup.yaml#/components/schemas/LookupRequest'
-
-            responses:
-                '200':
-                    description: created ok
-                    content:
-                        application/json:
-                            schema:
-                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
-        get:
-            summary: Get Lookups
-            responses:
-                '200':
-                    description: ok
-                    content:
-                        application/json:
-                            schema:
-                                $ref: './components/lookup.yaml#/components/schemas/LookupResponsePage'
-
-    /lookup/{uuid}:
-        get:
-            summary: Get Lookup by UUID
-            parameters:
-                -   name: uuid
-                    in: path
-                    description: UUID
-                    required: true
-                    schema:
-                        type: string
-            responses:
-                '200':
-                    description: ok
-                    content:
-                        application/json:
-                            schema:
-                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
-
-        put:
-            summary: Repair Lookup
-            parameters:
-                -   name: uuid
-                    in: path
-                    description: UUID
-                    required: true
-                    schema:
-                        type: string
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: './components/lookup.yaml#/components/schemas/LookupRequest'
-            responses:
-                '200':
-                    description: ok
-                    content:
-                        application/json:
-                            schema:
-                                $ref: './components/lookup.yaml#/components/schemas/LookupResponse'
-
     /provider:
         post:
             summary: Create Provider
@@ -118,6 +51,7 @@ paths:
                                 schema:
                                     $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
 
+
         put:
             summary: Update Provider
             parameters:
@@ -140,6 +74,23 @@ paths:
                                 schema:
                                     $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
 
+    /provider/search:
+        get:
+            summary: Search provider
+            parameters:
+                - name: searchStr
+                  in: query
+                  description: searchStr
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                '200':
+                    description: ok
+                    content:
+                        application/json:
+                            schema:
+                                $ref: './components/provider.yaml#/components/schemas/ProviderResponsePage'
 
     /consumer:
         post:

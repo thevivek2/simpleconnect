@@ -6,11 +6,13 @@ components:
             properties:
                 reference:
                     type: string
-                provides:
-                    type: object
-                    $ref: './lookup.yaml#/components/schemas/LookupRequest'
+                summary:
+                    type: string
+                description:
+                    type: string
             required:
-                - provides
+                - summary
+                - description
 
         ProviderResponse:
             title: ProviderResponse
@@ -22,13 +24,18 @@ components:
                     type: string
                 reference:
                     type: string
-                uuid:
+                id:
                     type: string
-                provides:
-                    type: array
-                    $ref: './lookup.yaml#/components/schemas/LookupResponse'
+                summary:
+                    type: string
+                description:
+                    type: string
                 createdOn:
                     type: string
+                score:
+                    type: string
+                interestCount:
+                    type: integer
 
         ProviderResponsePage:
             title: ProviderResponsePage
@@ -38,3 +45,20 @@ components:
                     type: array
                     items:
                         $ref: '#/components/schemas/ProviderResponse'
+                pageInfo:
+                    type: object
+                    $ref: '#/components/schemas/PageModel'
+
+
+        PageModel:
+            title: PageModel
+            type: object
+            properties:
+                totalPages:
+                    type: integer
+                totalElements:
+                    type: long
+                size:
+                    type: integer
+                pageNumber:
+                    type: integer
