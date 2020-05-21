@@ -84,6 +84,8 @@
     </dependencies>
     <build>
         <plugins>
+
+            <!--
             <plugin>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
@@ -102,6 +104,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            -->
 
             <plugin>
                 <groupId>org.openapitools</groupId>
