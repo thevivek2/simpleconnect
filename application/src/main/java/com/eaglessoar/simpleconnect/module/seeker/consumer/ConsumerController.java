@@ -1,16 +1,16 @@
 package com.eaglessoar.simpleconnect.module.seeker.consumer;
 
-import com.eaglessoar.simpleconnect.api.ConsumerApiDelegate;
+import com.eaglessoar.simpleconnect.api.ConsumerApi;
 import com.eaglessoar.simpleconnect.api.model.ConsumerRequest;
 import com.eaglessoar.simpleconnect.api.model.ConsumerResponse;
 import com.eaglessoar.simpleconnect.api.model.ConsumerResponsePage;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
 @AllArgsConstructor
-public class ConsumerController implements ConsumerApiDelegate {
+public class ConsumerController implements ConsumerApi {
 
     private final ConsumerService service;
     private final ConsumerMapper mapper;

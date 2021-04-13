@@ -8,6 +8,8 @@ info:
 paths:
     /provider:
         post:
+            tags:
+                - Provider
             summary: Create Provider
             requestBody:
                 required: true
@@ -24,6 +26,8 @@ paths:
                             schema:
                                 $ref: './components/provider.yaml#/components/schemas/ProviderResponse'
         get:
+            tags:
+                - Provider
             summary: Get Providers
             responses:
                 '200':
@@ -35,6 +39,8 @@ paths:
 
     /provider/{uuid}:
         get:
+            tags:
+                - Provider
             summary: Get Provider by UUID
             parameters:
                 -   name: uuid
@@ -53,6 +59,8 @@ paths:
 
 
         put:
+            tags:
+                - Provider
             summary: Update Provider
             parameters:
                     - name: uuid
@@ -76,6 +84,8 @@ paths:
 
     /provider/search:
         get:
+            tags:
+                - Provider
             summary: Search provider
             parameters:
                 - name: searchStr
@@ -94,6 +104,8 @@ paths:
 
     /consumer:
         post:
+            tags:
+                - Consumer
             summary: Create Consumer
             requestBody:
                 required: true
@@ -110,6 +122,8 @@ paths:
                             schema:
                                 $ref: './components/consumer.yaml#/components/schemas/ConsumerResponse'
         get:
+            tags:
+                - Consumer
             summary: Get Consumers
             responses:
                 '200':
@@ -121,6 +135,8 @@ paths:
 
     /consumer/{uuid}:
         get:
+            tags:
+                - Consumer
             summary: Get Consumer by UUID
             parameters:
                     - name: uuid
@@ -138,6 +154,8 @@ paths:
                                     $ref: './components/consumer.yaml#/components/schemas/ConsumerResponse'
 
         put:
+            tags:
+                - Consumer
             summary: Update Consumer
             parameters:
                     - name: uuid

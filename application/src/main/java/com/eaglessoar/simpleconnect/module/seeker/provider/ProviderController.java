@@ -1,21 +1,20 @@
 package com.eaglessoar.simpleconnect.module.seeker.provider;
 
-import com.eaglessoar.simpleconnect.api.ProviderApiDelegate;
+import com.eaglessoar.simpleconnect.api.ProviderApi;
 import com.eaglessoar.simpleconnect.api.model.PageModel;
 import com.eaglessoar.simpleconnect.api.model.ProviderRequest;
 import com.eaglessoar.simpleconnect.api.model.ProviderResponse;
 import com.eaglessoar.simpleconnect.api.model.ProviderResponsePage;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
 @AllArgsConstructor
-public class ProviderController implements ProviderApiDelegate {
+public class ProviderController implements ProviderApi {
 
     private final ProviderService service;
     private final ProviderMapper mapper;
@@ -36,8 +35,7 @@ public class ProviderController implements ProviderApiDelegate {
         pageInfo.setSize(all.getSize());
         pageInfo.setTotalElements(all.getTotalElements());
         pageInfo.setTotalPages(all.getTotalPages());
-        ProviderResponsePage content = new ProviderResponsePage().content(mapper.toResponse(all.getContent())).pageInfo(pageInfo);
-        return ResponseEntity.ok(content);
+        return ResponseEntity.ok(new ProviderResponsePage().content(mapper.toResponse(all.getContent())).pageInfo(pageInfo));
 
     }
 

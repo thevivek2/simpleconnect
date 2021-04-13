@@ -15,7 +15,9 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public Provider create(Provider provider) {
         provider.setCreatedOn(LocalDateTime.now());
-        return repository.save(provider);
+        Provider save = repository.save(provider);
+        System.out.println("Saving provider ::" + save);
+        return save;
     }
 
     @Override
