@@ -1,12 +1,9 @@
 # simpleconnect
-Microservice that connects provider and consumer based on interest, very simple. 
+Microservice that connects provider and consumer based on interest, and very simple so that we will hear from many nobody 
 
-<b>Lookups </b> - interest <br>
 <b>Providers </b> - someone who owns that interest <br>
 <b>Consumers </b> - someone who loved that interest.
 
 <br>
-<b>Idea</b> is to get rid of filling many field information to match, instead taking what best explains you/situtation/anything. 
-
-Sounds simple ? yes, we will start with even very simple and then make it simple. 
-
+<b>Idea</b> Lets listen the voice of nobody as anonymous and provide if you have same interest as nobody.
+We will be always nobody & anonymous
